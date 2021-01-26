@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/astelit/my-excel.git"
+    "url": "git+https://github.com/astelit/modal-js.git"
   },
   "keywords": [
     "js",
@@ -19,11 +19,7 @@
     "astelit"
   ],
   "author": "mandretov gennadiy, astelit, <grimgrim24@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/astelit/my-excel/issues"
-  },
-  "homepage": "https://github.com/astelit/my-excel#readme",
+  "homepage": "https://github.com/astelit/modal-js#readme",
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.12.10",
