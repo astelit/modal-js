@@ -1,0 +1,56 @@
+// rulers
+// =============================================================================
+
+// lite
+=r($pv: 50%, $ph:0, $c: red, $size: 1px)
+    html
+        position: relative
+        +ba('')
+            background-color: $c
+            position: fixed
+            z-index: 99999
+        +b
+            width: $size
+            height: 100%
+            top: 0
+            left: $pv
+
+        @if ($ph != null and $ph != 0)
+            +a
+                width: 100%
+                height: $size
+                left: 0
+                top: $ph
+
+
+// value conversion
+// =============================================================================
+
+// line-height pixels to relative units
+@function lh($lh-px,$fz)
+    @return #{($lh-px/$fz)}
+
+
+// property in pixels to % or pixels to vh/vw
+@function cn($num, $unit, $sizeBlog:1920, $lh:0)
+    @return #{($num * 100 / $sizeBlog - $lh)+$unit}
+
+
+// function conversion in em/rem
+@function units($num, $to:1em, $default: 16)
+    @return ($num / $default) * $to
+
+// grid-template-areas function
+// =============================================================================
+
+@function gridItem($num, $name)
+    $val: ''
+    @for $i from 1 through $num
+        $val: '#{$val}#{$name}#{$i} '
+    @return $val
+
+=gridItem($num, $name)
+    > *
+        @for $i from 1 through $num
+            &:nth-child(#{$i})
+                grid-area: #{$name}#{$i}

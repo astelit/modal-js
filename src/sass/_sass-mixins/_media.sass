@@ -1,0 +1,149 @@
+// max-width points
+$m1: 1685px
+$m2: 1445px
+$m3: 1370px
+$m4: 1285px
+$m5: 1155px
+$m6: 1055px
+$m7: 965px
+$m8: 865px
+$m9: 740px
+$m10: 639px
+$m11: 570px
+$m12: 480px
+$m13: 359px
+$m14: 320px
+
+
+// min-width points
+$mm1: 280px
+$mm2: 370px
+$mm3: 409px
+$mm4: 563px
+$mm5: 662px
+$mm6: 731px
+$mm7: 763px
+$mm8: 805px
+$mm9: 912px
+$mm10: 1019px
+$mm11: 1107px
+$mm12: 1280px
+$mm13: 1361px
+$mm14: 1435px
+$mm15: 1675px
+$mm16: 1915px
+ 
+
+// media query 
+// ==========================================================================
+
+// custom points
+=from($min_width)
+  @media screen and (min-width: $min_width)
+    @content
+
+=to($max_width)
+  @media screen and (max-width: $max_width)
+    @content
+
+=from-to($min_width, $max_width)
+  @media screen and (min-width: $min_width) and (max-width: $max_width)
+    @content
+
+
+// points - max-width
+=m1()
+  @media screen and (max-width: $m1)
+    @content
+=m2()
+  @media screen and (max-width: $m2)
+    @content
+=m3()
+  @media screen and (max-width: $m3)
+    @content
+=m4()
+  @media screen and (max-width: $m4)
+    @content
+=m5()
+  @media screen and (max-width: $m5)
+    @content
+=m6()
+  @media screen and (max-width: $m6)
+    @content
+=m7()
+  @media screen and (max-width: $m7)
+    @content
+=m8()
+  @media screen and (max-width: $m8)
+    @content
+=m9()
+  @media screen and (max-width: $m9)
+    @content
+=m10()
+  @media screen and (max-width: $m10)
+    @content
+=m11()
+  @media screen and (max-width: $m11)
+    @content
+=m12()
+  @media screen and (max-width: $m12)
+    @content
+=m13()
+  @media screen and (max-width: $m13)
+    @content
+=m14()
+  @media screen and (max-width: $m14)
+    @content
+
+
+// points - min-width
+=mm1()
+  @media screen and (min-width: $mm1)
+    @content
+=mm2()
+  @media screen and (min-width: $mm2)
+    @content
+=mm3()
+  @media screen and (min-width: $mm3)
+    @content
+=mm4()
+  @media screen and (min-width: $mm4)
+    @content
+=mm5()
+  @media screen and (min-width: $mm5)
+    @content
+=mm6()
+  @media screen and (min-width: $mm6)
+    @content
+=mm7()
+  @media screen and (min-width: $mm7)
+    @content
+=mm8()
+  @media screen and (min-width: $mm8)
+    @content
+=mm9()
+  @media screen and (min-width: $mm9)
+    @content
+=mm10()
+  @media screen and (min-width: $mm10)
+    @content
+=mm11()
+  @media screen and (min-width: $mm11)
+    @content
+=mm12()
+  @media screen and (min-width: $mm12)
+    @content
+=mm13()
+  @media screen and (min-width: $mm13)
+    @content
+=mm14()
+  @media screen and (min-width: $mm14)
+    @content
+=mm15()
+  @media screen and (min-width: $mm15)
+    @content
+=mm16()
+  @media screen and (min-width: $mm16)
+    @content
+
+

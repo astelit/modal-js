@@ -1,0 +1,30 @@
+\:root
+  @media (prefers-color-scheme: light)
+    --root_bgc: #fff
+    --root_txt: #555
+  @media (prefers-color-scheme: dark)
+    --root_bgc: #555
+    --root_txt: #fff
+
+  // alerts color
+  --good: #219653
+  --warning: #CF142B
+
+  // theme color
+  --c1: #31ac70
+  --c2: #A6AAD7
+  --c3: #F5F5F5
+  --c4: #bababa
+
+
+  // theme settings
+  --scrollbar_barColor: var(--c1)
+  --scrollbar_trackColor: #eaeaea
+  --scrollbar_width: 17px
+  @supports (transform-box: fill-box)
+    --scrollbar_width: 8px
+
+  //--wr: 1250px
+  //--wr_offset: 15px
+  //+rsp(--wr_offset, 1020px, 1600px, 15px, 50px)
+

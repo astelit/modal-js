@@ -1,0 +1,57 @@
+// responsive v4
+// =================================
+
+=responsive($properties, $min-vw, $max-vw, $min-value, $max-value, $i:null)
+  @if($properties == x or $properties == X or $properties == y or $properties == Y)
+    @if($min-value != 0)
+      transform: translate#{$properties}#{"("}$min-value#{")"} #{important($i)}
+    @media screen and (min-width: $min-vw)
+      transform: translate#{$properties}#{"("}calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * #{'('}100vw - #{$min-vw}#{')'} / #{strip-unit($max-vw - $min-vw)})#{")"} #{important($i)}
+    @media screen and (min-width: $max-vw)
+      transform: translate#{$properties}#{"("}$max-value#{")"} #{important($i)}
+
+  @else
+    @each $property in $properties
+      @if($min-value != 0)
+        #{$property}: $min-value #{important($i)}
+    @media screen and (min-width: $min-vw)
+      @each $property in $properties
+        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})  #{important($i)}
+    @media screen and (min-width: $max-vw)
+      @each $property in $properties
+        #{$property}: $max-value #{important($i)}
+
+
+// super
+=rsp($properties, $min-vw, $max-vw, $min-value, $max-value, $i:null)
+  @if($properties == x or $properties == X or $properties == y or $properties == Y)
+    @media screen and (min-width: $min-vw)
+      transform: translate#{$properties}#{"("}calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * #{'('}100vw - #{$min-vw}#{')'} / #{strip-unit($max-vw - $min-vw)})#{")"} #{important($i)}
+    @media screen and (min-width: $max-vw)
+      transform: translate#{$properties}#{"("}$max-value#{")"} #{important($i)}
+  @else
+    @media screen and (min-width: $min-vw)
+      @each $property in $properties
+        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) #{important($i)}
+    @media screen and (min-width: $max-vw)
+      @each $property in $properties
+        #{$property}: $max-value #{important($i)}
+// super end
+@function rsp($min-vw, $max-vw, $min-value, $max-value, $i:null)
+  @return calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) #{important($i)}
+
+@function strip-unit($number)
+  @if type-of($number) == "number" and not unitless($number)
+    @return $number / ($number * 0 + 1)
+  @return $number
+
+@function important($state)
+  @if $state == i
+    @return '!important'
+  @else
+    @return null
+  
+// =================================
+// responsive v4 END
+
+

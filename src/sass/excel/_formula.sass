@@ -1,0 +1,36 @@
+.formula
+  display: flex
+  border-bottom: 1px solid var(--excel_bdc)
+  min-height: 25px
+  &__icn
+    font-size: 18px
+    letter-spacing: .03em
+    text-align: center
+    font-style: italic
+    color: var(--excel_bdc)
+    min-width: var(--excel_inf-cell_width)
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    padding-right: 1px
+    +b('')
+      width: 1px
+      height: calc(100% - 4px)
+      background-color: var(--excel_bdc)
+      position: absolute
+      top: 50%
+      right: 0
+      transform: translateY(-50%)
+  &__inp
+    flex-grow: 1
+    padding: 4px 10px
+    font-size: 12px
+    //background-color: transparent
+    cursor: text
+    outline: none
+    white-space: pre-wrap
+    -webkit-user-modify: read-write-plaintext-only
+    &:focus
+      background-color: var(--excel_focus_bgc)
+

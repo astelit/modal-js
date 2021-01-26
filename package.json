@@ -1,0 +1,64 @@
+{
+  "name": "my-excel",
+  "version": "4.2.4",
+  "description": "Pure JS Excel Application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development webpack serve",
+    "dev": "cross-env NODE_ENV=development webpack",
+    "watch": "cross-env NODE_ENV=development webpack --watch",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astelit/my-excel.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "astelit"
+  ],
+  "author": "mandretov gennadiy, astelit, <grimgrim24@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astelit/my-excel/issues"
+  },
+  "homepage": "https://github.com/astelit/my-excel#readme",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "autoprefixer": "^10.2.3",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.18.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-webpack-plugin": "^2.4.3",
+    "file-loader": "^6.2.0",
+    "glob": "^7.1.6",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^5.0.0-alpha.10",
+    "install": "^0.13.0",
+    "mini-css-extract-plugin": "^1.3.4",
+    "postcss": "^8.2.4",
+    "postcss-loader": "^4.2.0",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.18.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "core-js": "^3.8.3",
+    "lodash": "^4.17.20",
+    "regenerator-runtime": "^0.13.7",
+    "whatwg-fetch": "^3.5.0"
+  }
+}

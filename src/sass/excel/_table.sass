@@ -1,0 +1,89 @@
+.excel-table
+  overflow: auto
+  cursor: default
+  &__row,
+  &__data,
+  &__info,
+  &__head
+    display: flex
+
+  &__row
+    min-height: var(--excel_row_height)
+    height: var(--excel_row_height)
+    width: max-content
+    will-change: height
+    &:first-child
+      position: sticky
+      top: 0
+
+
+
+  &__info
+    flex-shrink: 0
+    width: var(--excel_inf-cell_width)
+    font-size: 12px
+    position: sticky
+    left: 0
+    z-index: 1
+    &:hover
+      z-index: 2
+    &--resizing-el
+      --elms-resize_height: 6px
+      --elm-resiz_cursor: ns-resize
+      --elm-resize_left: 0
+      --elm-resize_right: 0
+      --elm-resize_bottom: calc(var(--elms-resize_height) / -2)
+
+      --elm-resize_after_height: 1px
+      --elm-resize_after_top: 50%
+      --elm-resize_after_left: 0
+      --elm-resize_after_right: -100vw
+      --elm-resize_after_tfty: -50%
+
+  &__info,
+  &__head
+    align-items: center
+    justify-content: center
+    background-color: var(--excel_thead_bgc)
+
+
+  &__info,
+  &__head,
+  &__cell
+    padding: 5px
+    border-right: 1px solid var(--excel_bdc)
+    border-bottom: 1px solid var(--excel_bdc)
+
+  &__head,
+  &__cell
+    min-width: 40px
+    width: var(--excel_cell_width)
+    will-change: width
+
+
+
+  &__head
+    position: relative
+    &--resizing-el
+      --elm-resize_width: 6px
+      --elm-resiz_cursor: ew-resize
+      --elm-resize_top: 0
+      --elm-resize_right: calc(var(--elm-resize_width) / -2)
+      --elm-resize_bottom: 0
+      --elm-resize_after_width: 1px
+      --elm-resize_after_top: 0
+      --elm-resize_after_left: 50%
+      --elm-resize_after_bottom: -100vh
+      --elm-resize_after_tftx: -50%
+
+
+
+  &__cell
+    white-space: nowrap
+    outline: none
+    &.is_selected
+      padding: 5px 6px
+      background-color: var(--excel_focus_bgc)
+      box-shadow: inset 0 0 0 2px var(--excel_focus_ouc),0 2px 6px 2px var(--excel_focus_bxs)
+
+

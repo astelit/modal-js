@@ -1,0 +1,110 @@
+// scrollbar
+// https://css-tricks.com/the-current-state-of-styling-scrollbars/
+// =============================================================================	
+
+// common
+=scroll($cbar: var(--scrollbar_barColor, #c0c0c0), $ctrack: var(--scrollbar_trackColor, #f1f1f1), $w:var(--scrollbar_width, 8px), $h:var(--scrollbar_height,8px))
+	scrollbar-color: $cbar $ctrack
+	&::-webkit-scrollbar-track-piece
+		background-color: $ctrack
+	&::-webkit-scrollbar-thumb
+		background-color: $cbar
+	&::-webkit-scrollbar
+		width: $w
+		height: $h
+
+
+// pseudo-elements
+// =============================================================================
+
+// выделение контента
+=sel($bgc: #000, $color: #fff)
+	&::selection
+		background-color: $bgc
+		color: $color
+		@content
+
+
+// placeholder form
+=plc($color: currentColor)
+	&::placeholder
+		color: $color
+		@content
+
+
+// before and after
+=ba($con:null)
+	&::before,
+	&::after
+		@if($con)
+			content: $con
+		@content
+
+
+// before
+=b($con:null)
+	&::before
+		@if($con)
+			content: $con
+		@content
+
+	
+// after
+=a($con:null)
+	&::after
+		@if($con)
+			content: $con
+		@content
+
+// устанавливает стили для реплик (субтитры)
+=cue($bgc: rgba(0, 0, 0, 0.6), $color: #fff)	
+	::cue
+		background-color: $bgc
+		color: $color
+		@content
+
+
+// triangle 
+// =============================================================================
+
+// border
+=tr($pos,$sw,$sh,$color:#000)
+	width: 0
+	height: 0
+	border-style: solid
+	@if($pos == 'top')
+		border-width: 0 $sw/2 $sh $sw/2
+		border-color: transparent transparent  $color transparent
+	@else if($pos == 'bot')
+		border-width: $sh $sw/2 0 $sw/2
+		border-color: $color transparent transparent transparent
+	@else if($pos == 'left')
+		border-width: $sh/2 $sw $sh/2 0
+		border-color: transparent $color transparent transparent
+	@else if($pos == 'right')
+		border-width: $sh/2 0 $sh/2 $sw
+		border-color: transparent transparent transparent $color
+	@else if($pos == 'top-left')
+		@if($sw > $sh)
+			border-width: $sw $sw 0 0
+		@else
+			border-width: $sh $sh 0 0
+		border-color: $color transparent transparent transparent
+	@else if($pos == 'top-right')
+		@if($sw > $sh)
+			border-width: 0 $sw $sw 0
+		@else
+			border-width: 0 $sh $sh 0
+		border-color: transparent $color transparent transparent
+	@else if($pos == 'bot-left')
+		@if($sw > $sh)
+			border-width: $sw 0 0 $sw
+		@else
+			border-width: $sh 0 0 $sh
+		border-color: transparent transparent transparent $color
+	@else if($pos == 'bot-right')
+		@if($sw > $sh)
+			border-width: 0 0 $sw $sw
+		@else
+			border-width: 0 0 $sh $sh
+		border-color: transparent transparent $color transparent

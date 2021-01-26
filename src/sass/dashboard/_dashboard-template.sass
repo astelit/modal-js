@@ -1,0 +1,23 @@
+.dashboard-template
+  display: inline-flex
+  flex-direction: column
+  &__thumb
+    background-color: #ddd
+    border: 1px solid var(--dashboard-template_thumb_bdc, #dadce0)
+    border-radius: 4px
+    overflow: hidden
+    cursor: pointer
+    transition: 250ms
+  &__body
+    &:not(:only-child)
+      min-height: 32px
+      padding: 10px 4px 0
+
+  &__name
+    font-size: 14px
+    font-weight: 500
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+  &:hover
+    --dashboard-template_thumb_bdc: #31ac70

@@ -1,0 +1,61 @@
+%zbtn-reset
+  cursor: pointer
+  text-decoration: none
+  user-select: none
+
+  text-transform: var(--zbtn_tt, none)
+  background-color: var(--zbtn_bgc, transparent)
+  font-size: var(--zbtn_fz, inherit)
+  color: var(--zbtn_color, inherit)
+  border-radius: var(--zbtn_bdrs, 0)
+
+  width: var(--zbtn_width, auto)
+  height: var(--zbtn_height, auto)
+  min-width: var(--zbtn_min-width, auto)
+  min-height: var(--zbtn_min-height, auto)
+
+
+  border: var(--zbtn_bdw, 0) solid var(--zbtn_bdc, transparent)
+  padding: var(--zbtn_pt, 0) var(--zbtn_pr, 0) var(--zbtn_pb, 0) var(--zbtn_pl, 0)
+  &:hover
+    color: var(--zbtn_hover_color, inherit)
+  &:active,
+  &.active
+    color: var(--zbtn_active_color, initial)
+  &:focus
+    outline: none
+//================================================================================
+
+%inp-reset
+  background-color: var(--inp_bgc, transparent)
+  border: var(--inp_bdw, 1px) solid var(--inp_bdc, #767676)
+  color: var(--inp_color, inherit)
+  &:focus
+    background-color: var(--inp_bgc, transparent)
+    outline: none
+
+
+// wrapper
+%wr
+  max-width: var(--wr, none)
+  padding-left: var(--wr_offset, 0)
+  padding-right: var(--wr_offset, 0)
+  margin-left: var(--wr_ml, auto)
+  margin-right: var(--wr_mr, auto)
+//================================================================================
+
+%list-reset
+  padding: 0
+  margin: 0
+  list-style-type: none
+
+
+%pre
+  word-wrap: break-word
+  white-space: pre
+%pre-wrap
+  word-wrap: break-word
+  white-space: pre-wrap
+%pre-line
+  word-wrap: break-word
+  white-space: pre-line

@@ -1,0 +1,151 @@
+$columns: 12
+$offset: 30px
+$fields: 15
+
+$atom: (100% / $columns)
+
+
+$offset_one_side: ($offset / 2)
+
+
+//=========================================================
+=wrapper-full()
+  padding-left: $fields
+  padding-right: $fields
+
+=row-offsets()
+  margin-left: ($offset_one_side * -1)
+  margin-right: ($offset_one_side * -1)
+
+=col-offsets($type, $val, $val2)
+  @if($val == null)
+    #{$type}-left: $offset_one_side
+    #{$type}-right: $offset_one_side
+  @else if($val == true)
+    #{$type}-left: $offset_one_side
+    #{$type}-right: $offset_one_side
+    #{$type}-bottom: ($offset_one_side * 2)
+  @else if($val == mb and $val2 != null)
+    #{$type}-left: ($val2 / 2)
+    #{$type}-right: ($val2 / 2)
+    #{$type}-bottom: $val2
+  @else if($val == $val and $val2 != null)
+    #{$type}-left: ($val2 / 2)
+    #{$type}-right: ($val2 / 2)
+    #{$type}-bottom: $val
+  @else
+    #{$type}-left: ($val / 2)
+    #{$type}-right: ($val / 2)
+
+//=========================================================
+
+=wr($wr: 1170px, $pd: $offset, $pos: center)
+  @if($wr != 0 and $pd != 0)
+    max-width: $wr + $pd
+    padding-left: $pd / 2
+    padding-right: $pd / 2
+  @else if($wr != 0 and $pd == 0)
+    max-width: $wr
+  @else
+    padding-left: $pd / 2
+    padding-right: $pd / 2
+
+  @if($pos == "center")
+    margin-left: auto
+    margin-right: auto
+  @else if($pos == "left")
+    margin-right: auto
+  @else if($pos == "right")
+    margin-left: auto
+  @else
+
+
+=sflex($ofs:null, $wp:wrap)
+  display: flex
+  @if($wp != 'nwp')
+    flex-wrap: $wp
+  @if($ofs != null and $ofs != 0)
+    margin-left: ($ofs / -2)
+    margin-right: ($ofs / -2)
+  @else if($ofs == 0)
+  @else
+    +row-offsets()
+
+=col($ofs:null, $mb:null, $type:margin)
+  word-wrap: break-word
+  @if($ofs != null and $mb == null)
+    #{$type}-left: $ofs / 2
+    #{$type}-right: $ofs / 2
+  @else if($ofs != null and $mb != null and $mb != 'mb')
+    #{$type}-left: $ofs / 2
+    #{$type}-right: $ofs / 2
+    #{$type}-bottom: $mb
+  @else if($ofs != null and $mb == 'mb')
+    #{$type}-left: $ofs / 2
+    #{$type}-right: $ofs / 2
+    #{$type}-bottom: $ofs
+  @else
+    #{$type}-bottom: $mb
+  
+//=col($mb:null, $ofs:null, $type:margin)
+//  word-wrap: break-word
+//  @if($mb == 'mb' and $ofs == null)
+//    +col-offsets($type, true, $ofs)
+//  @else
+//    +col-offsets($type, $mb, $ofs)
+
+=size($n, $full: null)
+  $col: $columns / $n
+  $val: 100% / $columns * $col
+  @if($full == full)
+    width: $val
+  @else if($full != null)
+    width: #{calc(#{$val} - #{$full})}
+  @else
+    width: #{calc(#{$val} - #{$offset})}
+
+//-------------------------------------
+=gg($col, $gap:full, $gap-b:$gap)
+  --col: #{$col}
+  @if($gap != full and $gap != 0)
+    --gap: #{$gap}
+    +sf(--gap)
+    > *
+      +sz(--col,--gap)
+    @if($gap-b != 0)
+      --gap-b: #{$gap-b}
+      > *
+        +cl(--gap, --gap-b)
+    @else
+      > *
+        +cl(--gap)
+  @else
+    +sf()
+    > *
+      +sz(--col, full)
+  
+      
+=sf($ofs:null, $wp:wrap)
+  display: flex
+  @if($wp != 'nwp')
+    flex-wrap: $wp
+  @if($ofs != null and $ofs != 0)
+    margin-left: #{calc(var(#{$ofs}) / -2)}
+    margin-right: #{calc(var(#{$ofs}) / -2)}
+
+   
+    
+=cl($ofs:null,$mb:null)
+  word-wrap: break-word
+  @if($ofs != null)
+    margin-left: #{calc(var(#{$ofs}) / 2)}
+    margin-right: #{calc(var(#{$ofs}) / 2)}
+  @if($mb != null)
+    margin-bottom: #{var(#{$mb})}
+ 
+=sz($n, $ofs:null)
+    $val: 100% / var(#{$n})
+    @if($ofs != null and $ofs != full)
+      width: calc(#{$val} - var(#{$ofs}))
+    @else
+      width: calc(#{$val})

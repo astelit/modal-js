@@ -1,0 +1,38 @@
+.table-item
+  display: flex
+  flex-wrap: wrap
+  align-items: baseline
+
+  padding: 14px 0
+  font-weight: 500
+  text-decoration: none
+  color: inherit
+  position: relative
+  +ba('')
+  +b
+    width: calc(100% + 32px)
+    height: 100%
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    border-radius: 25px
+    z-index: -1
+    transition: 250ms
+  +a
+    order: -1
+    flex-grow: 1
+    height: 1px
+    margin: 0 8px
+    border-bottom: 1px dotted #ddd
+  & + &
+    margin-top: 10px
+  &:hover
+    +b
+      background-color: rgba(green,.5)
+  &__name
+    order: -2
+  &__name,
+  &__date
+    letter-spacing: .03em
+

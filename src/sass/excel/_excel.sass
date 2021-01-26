@@ -1,0 +1,31 @@
+.excel
+  --excel_bdc: #c0c0c0
+  --excel_inf-cell_width: 46px
+  --excel_row_height: 27px
+  --excel_cell_width: 120px
+
+  @media (prefers-color-scheme: light)
+    --excel_focus_bgc: #fff
+    --excel_focus_ouc: #3c74ff
+    --excel_focus_bxs: var(--excel_bdc)
+    --excel_thead_bgc: rgba(60,64,67,.15)
+
+  @media (prefers-color-scheme: dark)
+    --excel_focus_bgc: #{darken(#555,5%)}
+    --excel_focus_ouc: #3aff00
+    --excel_focus_bxs: #{darken(rgba(#444,.4),4%)}
+    --excel_thead_bgc: #{darken(#555,8%)}
+
+
+  height: 100vh
+  display: grid
+  grid-template-columns: 100%
+  grid-template-rows: repeat(3, auto) 1fr
+  font-size: 14px
+  &__header
+    padding: 8px 10px 4px 4px
+  &__toolbar
+    padding: 8px 10px
+  &__formula
+    padding: 2px 0
+  // &__table

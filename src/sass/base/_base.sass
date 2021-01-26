@@ -1,0 +1,77 @@
+*
+    scrollbar-width: thin
+    scrollbar-color: #c0c0c0 #f1f1f1
+    box-sizing: border-box
+    +ba()
+        box-sizing: border-box
+    &:not(.if-scroll)
+        +scroll()
+
+::selection
+    background-color: #222222
+    color: #f2f2f2
+
+
+::placeholder
+    color: currentColor
+    font-size: inherit
+
+html,
+body
+    scroll-behavior: smooth
+
+html
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    -webkit-tap-highlight-color: transparent
+
+body
+    min-width: 280px
+
+svg
+    fill: currentColor
+
+[class*='__img'],
+[class*='--img']
+    display: block
+    max-width: 100%
+
+img
+    font-size: 1rem
+    position: relative
+    +a("&#128443;" " " attr(alt))
+        background: #f2f2f2
+        color: #222
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: 0.75rem
+        +rsp(font-size, 20.0625rem, 80.375rem, 0.75rem, 0.875rem)
+
+    &[src=""]
+        width: 100%
+        height: 100%
+        +a('')
+            background-color: #{rgba(#76C2C9,.5)}
+            background-blend-mode: luminosity
+            background-image: url('../img/no_img.jpg')
+            background-repeat: no-repeat
+            background-position: center
+            background-size: cover
+
+a
+    &[href*="javascript:void(0);"]
+        cursor: text
+
+input
+    &:-internal-autofill-selected
+        background-color: rgba(232, 240, 254, 0) !important
+        background-image: none !important
+        color: rgb(0, 0, 0) !important
+        box-shadow: inset 0 0 0 52px #f4f4f4
