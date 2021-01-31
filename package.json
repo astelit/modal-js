@@ -1,9 +1,9 @@
 {
-  "name": "my-excel",
-  "version": "4.2.4",
-  "description": "Pure JS Excel Application",
+  "name": "modal-js",
+  "version": "1.0.0",
+  "description": "small modal plugin js",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development webpack serve",
     "dev": "cross-env NODE_ENV=development webpack",
     "watch": "cross-env NODE_ENV=development webpack --watch",
@@ -14,13 +14,16 @@
     "url": "git+https://github.com/astelit/modal-js.git"
   },
   "keywords": [
+    "modal",
     "js",
-    "javascript",
-    "astelit"
+    "javascript"
   ],
-  "author": "mandretov gennadiy, astelit, <grimgrim24@gmail.com>",
+  "author": "astelit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/astelit/modal-js/issues"
+  },
   "homepage": "https://github.com/astelit/modal-js#readme",
-  "private": true,
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",

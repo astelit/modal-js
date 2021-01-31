@@ -36,10 +36,9 @@ module.exports = {
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
-    port: 4200,
+    port: 8080,
     hot: true,
-    open: false,
-    noInfo: true
+    open: false
   },
   plugins: [
     new CleanWebpackPlugin({cleanStaleWebpackAssets: false}),
