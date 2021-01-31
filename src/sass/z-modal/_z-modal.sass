@@ -1,0 +1,112 @@
+.z-modal
+  @media (prefers-color-scheme: light)
+    --z-modal_bgc: #fff
+    --z-modal_bdc: #eaecef
+  @media (prefers-color-scheme: dark)
+    --z-modal_bgc: #21262d
+    --z-modal_bdc: #30363d
+
+  --z-modal_offset-y: 40px
+  --z-modal_offset-x: 15px
+  --z-modal_size: 600px
+  --z-modal_bdrs: 8px
+  --z-modal_color: var(--root_txt)
+  --z-modal_shadow: var(--root_shadow)
+
+  --z-modal_close_size: 30px
+
+  --z-modal_window_offset-y: 10px
+  --z-modal_window_offset-x: 15px
+  &__overlay
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 100
+    background-color: rgba(#000,.5)
+    backdrop-filter: blur(2px)
+
+    display: flex
+    overflow-x: hidden
+    overflow-y: auto
+    max-height: 100vh
+    padding: var(--z-modal_offset-y) var(--z-modal_offset-x)
+
+  &__window
+    background-color: var(--z-modal_bgc)
+    border-radius: var(--z-modal_bdrs)
+    max-width: var(--z-modal_size)
+    box-shadow: var(--z-modal_shadow)
+    margin: auto
+    width: 100%
+
+  &__close
+    @extend %btn-reset
+    width: var(--z-modal_close_size)
+    height: var(--z-modal_close_size)
+    transition: 250ms
+    &:not(:empty)
+      display: flex
+      align-items: center
+      justify-content: center
+    &:empty
+      position: relative
+      &::before,
+      &::after
+        content: ''
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%) rotate(45deg)
+        background-color: var(--z-modal_color)
+      &::before
+        width: 85%
+        height: 1px
+      &::after
+        width: 1px
+        height: 85%
+    &:hover
+      transform: rotate(180deg)
+
+  &__window > &__close
+    float: right
+    margin-top: calc(var(--z-modal_close_size) * -1)
+    position: sticky
+    top: 0
+    transform: translate(100%,-100%) translateY(var(--z-modal_close_size)) translate(3px, -3px)
+    &:hover
+      transform: translate(100%,-100%) translateY(var(--z-modal_close_size)) translate(3px, -3px) rotate(180deg)
+
+  &__header,
+  &__main,
+  &__footer
+    &:not(:empty)
+      padding: var(--z-modal_window_offset-y) var(--z-modal_window_offset-x)
+
+  &__main,
+  &__footer
+    &:not(:empty)
+      border-top: 1px solid var(--z-modal_bdc)
+
+  &__header
+    width: 100%
+    display: grid
+    grid-gap: 10px
+    grid-template-columns: 1fr auto
+    justify-content: space-between
+    align-items: center
+
+
+    > *:only-child
+      grid-column: 1 / -1
+
+  &__heading
+    font-size: 1.5em
+
+  //&__main
+  //&__footer
+
+html
+  overflow: hidden

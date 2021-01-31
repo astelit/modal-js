@@ -1,29 +1,16 @@
-%zbtn-reset
+%btn-reset
   cursor: pointer
   text-decoration: none
   user-select: none
 
-  text-transform: var(--zbtn_tt, none)
-  background-color: var(--zbtn_bgc, transparent)
-  font-size: var(--zbtn_fz, inherit)
-  color: var(--zbtn_color, inherit)
-  border-radius: var(--zbtn_bdrs, 0)
+  color: var(--z-btn_color, inherit)
+  font-size: var(--z-btn_fz, inherit)
+  text-transform: var(--z-btn_tt, none)
+  background-color: var(--z-btn_bgc, transparent)
+  border: var(--z-btn_bdw, 0) solid var(--z-btn_bdc, transparent)
+  padding: var(--z-btn_pt, 0) var(--z-btn_pr, 0) var(--z-btn_pb, 0) var(--z-btn_pl, 0)
+  border-radius: var(--z-btn_bdrs, 0)
 
-  width: var(--zbtn_width, auto)
-  height: var(--zbtn_height, auto)
-  min-width: var(--zbtn_min-width, auto)
-  min-height: var(--zbtn_min-height, auto)
-
-
-  border: var(--zbtn_bdw, 0) solid var(--zbtn_bdc, transparent)
-  padding: var(--zbtn_pt, 0) var(--zbtn_pr, 0) var(--zbtn_pb, 0) var(--zbtn_pl, 0)
-  &:hover
-    color: var(--zbtn_hover_color, inherit)
-  &:active,
-  &.active
-    color: var(--zbtn_active_color, initial)
-  &:focus
-    outline: none
 //================================================================================
 
 %inp-reset
