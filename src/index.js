@@ -1,3 +1,5 @@
 import './sass/z-style.sass'
+import './js/base.js'
+import './js/plugins/modal.js'
 import './js/main.js'
 import './index.html'
