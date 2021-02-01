@@ -15,8 +15,10 @@ function _createModal(options) {
                   </div>
               </div>
               <div class="z-modal__footer">
-                  <button type="button" class="z-btn">Ok</button>
-                  <button type="button" class="z-btn">Cancel</button>
+                  <div class="z-modal__btns">
+                      <button type="button" class="z-modal__btn">Ok</button>
+                      <button type="button" class="z-modal__btn">Cancel</button>
+                  </div>
               </div>
           </div>
       </div>
@@ -25,12 +27,24 @@ function _createModal(options) {
   return modal
 }
 
-$.modal = function(options) {
-  // eslint-disable-next-line no-unused-vars
+modal = function(options) {
+  const ANIMATION_DELAY = 700
   const $modal = _createModal(options)
+  let closing = false
   return {
-    open() {},
-    close() {},
+    open() {
+      !closing && $modal.classList.add('is_active')
+    },
+    close() {
+      closing = true
+      $modal.classList.remove('is_active')
+      $modal.classList.add('is_closing')
+      setTimeout(() => {
+        $modal.classList.remove('is_closing')
+        closing = false
+      }, ANIMATION_DELAY)
+    },
     destroy() {}
   }  
 }
+

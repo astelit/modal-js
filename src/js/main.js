@@ -1,3 +1,9 @@
-const zModal = $.modal()
+const zModal = modal()
 
-zModal.open()
+setTimeout(function() {
+  zModal.open()
+},2000)
+
+setTimeout(function() {
+  zModal.close()
+},4000)

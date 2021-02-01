@@ -33,9 +33,9 @@ module.exports = {
   },
   devtool: isDev? 'source-map' : false,
   devServer: {
-    historyApiFallback: true,
+    // historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'dist'),
-    compress: true,
+    // compress: true,
     port: 8080,
     hot: true,
     open: false
@@ -59,7 +59,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `css/${filename('css')}`
     }),
-    new ESLintPlugin()
+    // new ESLintPlugin()
   ],
   output: {
     filename: filename('js'),
