@@ -17,6 +17,9 @@
 
   --z-modal_window_offset-y: 10px
   --z-modal_window_offset-x: 15px
+  &:not(.is_active)
+    z-index: -1
+    pointer-events: none
   &__overlay
     position: fixed
     top: 0
@@ -32,6 +35,12 @@
     overflow-y: auto
     max-height: 100vh
     padding: var(--z-modal_offset-y) var(--z-modal_offset-x)
+    transition: .25s cubic-bezier(0.3, 0, 0.5, 1)
+
+  &:not(.is_active) &__overlay
+    transition-duration: .35s
+    transition-delay: .35s
+    opacity: 0
 
   &__window
     background-color: var(--z-modal_bgc)
@@ -40,12 +49,20 @@
     box-shadow: var(--z-modal_shadow)
     margin: auto
     width: 100%
+    transition: .25s .35s cubic-bezier(0.3, 0, 0.5, 1)
+    
+  &:not(.is_active) &__window
+    transition-duration: .35s
+    transition-delay: 0s
+    opacity: 0
+    transform: translateY(-50%)
 
   &__close
     @extend %btn-reset
     width: var(--z-modal_close_size)
     height: var(--z-modal_close_size)
-    transition: 250ms
+    outline: none
+    transition: .2s cubic-bezier(0.3, 0, 0.5, 1)
     &:not(:empty)
       display: flex
       align-items: center
@@ -105,8 +122,28 @@
   &__heading
     font-size: 1.5em
 
-  //&__main
-  //&__footer
 
-html
-  overflow: hidden
+  &__btns
+    --gap: 10px
+    display: flex
+    justify-content: flex-end
+    margin: 0 calc(var(--gap) / -2) calc(var(--gap) / -1)
+    > *
+      margin: 0 calc(var(--gap) / 2) var(--gap)
+  &__btn
+    @extend %btn-reset
+    --z-btn_fz: 14px
+    --z-btn_color: #fff
+    --z-btn_bgc: #2ea043
+    --z-btn_bdc: #238636
+    --z-btn_bdw: 1px
+    --z-btn_bdrs: 6px
+    --z-btn_ptb: 5px
+    --z-btn_plr: 10px
+    font-weight: 500
+    transition: .2s cubic-bezier(0.3, 0, 0.5, 1)
+    &:hover
+      --z-btn_bgc: #2ea043
+      --z-btn_bdc: #3fb950
+      transition-duration: .1s
+
