@@ -1,2 +1,3 @@
-console.log('main')
-$.modal()
+const zModal = $.modal()
+
+zModal.open()
