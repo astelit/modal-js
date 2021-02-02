@@ -59,7 +59,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `css/${filename('css')}`
     }),
-    // new ESLintPlugin()
+    new ESLintPlugin()
   ],
   output: {
     filename: filename('js'),

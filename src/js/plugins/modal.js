@@ -1,38 +1,48 @@
 function _createModal(options) {
-  const modal = document.createElement('div')
-  modal.classList.add('z-modal')
-  modal.insertAdjacentHTML('afterbegin', `
-      <div class="z-modal__overlay">
-          <div class="z-modal__window">
+  const zmodal = document.createElement('div')
+  const size = options.width ? `style="--z-modal_size: ${options.width}"` : ''
+  zmodal.classList.add('z-modal')
+  zmodal.insertAdjacentHTML('afterbegin', `
+      <div class="z-modal__overlay" data-zmodal="close">
+          <div class="z-modal__window" ${size}>
+              ${options.closeBtnShow && !options.closeBtnInside
+                ? `<button class="z-modal__close" data-zmodal="close"></button>`
+                : ''}
               <div class="z-modal__header">
-                  <div class="z-modal__heading">Modal Heading</div>
-                  <button class="z-modal__close"></button>
+                  <div class="z-modal__heading">${options.heading || ''}</div>
+                  ${options.closeBtnShow && options.closeBtnInside
+                    ? `<button class="z-modal__close"
+                               data-zmodal="close"></button>`
+                    : ''}
               </div>
-              <div class="z-modal__main">
-                  <div class="z-editor">
-                      <p>Lorem ipsum dolor sit.</p>
-                      <p>Lorem ipsum dolor sit.</p>
-                  </div>
+              <div class="z-editor z-modal__main" data-zmodal="content">
+                  ${options.content || ''}
               </div>
               <div class="z-modal__footer">
                   <div class="z-modal__btns">
                       <button type="button" class="z-modal__btn">Ok</button>
-                      <button type="button" class="z-modal__btn">Cancel</button>
+                      <button type="button" class="z-modal__btn"
+                              data-zmodal="close">Cancel</button>
                   </div>
               </div>
           </div>
       </div>
   `)
-  document.body.appendChild(modal)
-  return modal
+  document.body.appendChild(zmodal)
+  return zmodal
 }
 
-modal = function(options) {
+zmodal = function(options) {
   const ANIMATION_DELAY = 700
   const $modal = _createModal(options)
   let closing = false
-  return {
+  let destroyed = false
+  
+  const zmodal = {
     open() {
+      if (destroyed) {
+        return console.log('Modal is destroyed')
+      }
       !closing && $modal.classList.add('is_active')
     },
     close() {
@@ -43,8 +53,25 @@ modal = function(options) {
         $modal.classList.remove('is_closing')
         closing = false
       }, ANIMATION_DELAY)
+    }
+  }
+  
+  const listener = event => {
+    if (event.target.dataset.zmodal === 'close') {
+      zmodal.close()
+    }
+  }
+  
+  $modal.addEventListener('click', listener)
+  
+  return Object.assign(zmodal, {
+    setContent(html) {
+      $modal.querySelector('[data-zmodal="content"]').innerHTML = html
     },
-    destroy() {}
-  }  
+    destroy() {
+      $modal.parentNode.removeChild($modal)
+      $modal.removeEventListener('click', listener)
+      destroyed = true
+    }
+  })
 }
-
