@@ -1,3 +1,26 @@
+Element.prototype.appendAfter = function(element) {
+  element.parentNode.insertBefore(this, element.nextSibling)
+}
+
+function noop() {}
+
+function _createFooter(buttons = []) {
+  const wrap = document.createElement('div')
+  wrap.classList.add('z-modal__footer')
+  
+  buttons.forEach(btn => {
+    const $btn = document.createElement('button')
+ 
+    $btn.textContent = btn.text
+    $btn.classList.add('z-modal__btn')
+    $btn.classList.add(btn.type || '')
+    $btn.onclick = btn.onclick || noop
+    
+    wrap.appendChild($btn)
+  })
+  return wrap
+}
+
 function _createModal(options) {
   const zmodal = document.createElement('div')
   const size = options.width ? `style="--z-modal_size: ${options.width}"` : ''
@@ -28,6 +51,10 @@ function _createModal(options) {
           </div>
       </div>
   `)
+  if (options.footerButtons) {
+    const footer = _createFooter(options.footerButtons)
+    footer.appendAfter(zmodal.querySelector('[data-zmodal="content"]'))
+  }
   document.body.appendChild(zmodal)
   return zmodal
 }

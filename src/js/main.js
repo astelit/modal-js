@@ -6,7 +6,19 @@ const zModal = zmodal({
     <h4>Modal is working</h4>
     <p>Lorem ipsum dolor sit amet.</p>
   `,
-  width: '500px'
+  width: '500px',
+  footerButtons: [
+    {
+      text: 'Ok', type: 'primary', handler() {
+        console.log('Ok btn clicked');
+      }
+    },
+    {
+      text: 'Cancel', type: 'danger', handler() {
+        console.log('Cancel btn clicked');
+      }
+    }
+  ]
 })
 
 setTimeout(function() {
