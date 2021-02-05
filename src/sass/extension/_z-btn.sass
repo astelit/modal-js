@@ -1,3 +1,25 @@
 .z-btn
     @extend %btn-reset
+    --z-btn_color: var(--root_txt)
+    --z-btn_fz: 14px
+    --z-btn_bdw: 1px
+    --z-btn_bdrs: 6px
+    --z-btn_ptb: 5px
+    --z-btn_plr: 10px
+    font-weight: 500
+    transition: .2s cubic-bezier(0.3, 0, 0.5, 1)
+    &:hover
+        transition-duration: .1s
+    &_main
+        --z-btn_bgc: #238636
+        --z-btn_bdc: var(--z-btn_bgc)
+        &:hover
+            --z-btn_bgc: #2ea043
+            --z-btn_bdc: #3fb950
 
+    &_secondary
+        --z-btn_bgc: #21262d
+        --z-btn_bdc: #30363d
+        &:hover
+            --z-btn_bgc: #30363d
+            --z-btn_bdc: #8b949e

@@ -4,21 +4,24 @@ Element.prototype.appendAfter = function(element) {
 
 function noop() {}
 
-function _createFooter(buttons = []) {
-  const wrap = document.createElement('div')
-  wrap.classList.add('z-modal__footer')
+function _createButtons(buttons = []) {
+  const buttonsWrap = document.createElement('div')
+  buttonsWrap.classList.add('z-modal__btns')
   
   buttons.forEach(btn => {
     const $btn = document.createElement('button')
  
     $btn.textContent = btn.text
+    const cc = btn.type.split(' ')
+    console.log(cc)
     $btn.classList.add('z-modal__btn')
-    $btn.classList.add(btn.type || '')
-    $btn.onclick = btn.onclick || noop
-    
-    wrap.appendChild($btn)
+    $btn.classList.add(...['z-btn', 'z-btn_main', 'z-modal__btn'])
+    // $btn.classList.add(...cc)
+    $btn.onclick = btn.handler || noop
+  
+    buttonsWrap.appendChild($btn)
   })
-  return wrap
+  return buttonsWrap
 }
 
 function _createModal(options) {
@@ -41,19 +44,14 @@ function _createModal(options) {
               <div class="z-editor z-modal__main" data-zmodal="content">
                   ${options.content || ''}
               </div>
-              <div class="z-modal__footer">
-                  <div class="z-modal__btns">
-                      <button type="button" class="z-modal__btn">Ok</button>
-                      <button type="button" class="z-modal__btn"
-                              data-zmodal="close">Cancel</button>
-                  </div>
-              </div>
+              <div class="z-modal__footer" data-zmodal="footer"></div>
           </div>
       </div>
   `)
   if (options.footerButtons) {
-    const footer = _createFooter(options.footerButtons)
-    footer.appendAfter(zmodal.querySelector('[data-zmodal="content"]'))
+    const footerButtons = _createButtons(options.footerButtons)
+    zmodal.querySelector('[data-zmodal="footer"]')
+        .appendChild(footerButtons)
   }
   document.body.appendChild(zmodal)
   return zmodal
