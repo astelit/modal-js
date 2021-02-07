@@ -9,12 +9,12 @@ const zModal = zmodal({
   width: '500px',
   footerButtons: [
     {
-      text: 'Ok', type: 'primary', handler() {
+      text: 'Ok', classes: 'primary', handler() {
         console.log('Ok btn clicked');
       }
     },
     {
-      text: 'Cancel', type: 'danger', handler() {
+      text: 'Cancel', classes: 'danger', handler() {
         console.log('Cancel btn clicked');
         zModal.close();
       }

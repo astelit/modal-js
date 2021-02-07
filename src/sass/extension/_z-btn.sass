@@ -1,12 +1,13 @@
 .z-btn
     @extend %btn-reset
     --z-btn_color: var(--root_txt)
-    --z-btn_fz: 14px
+    --z-btn_fz: clamp(12px, (100vw / 1000 * 14), 14px)
     --z-btn_bdw: 1px
     --z-btn_bdrs: 6px
     --z-btn_ptb: 6px
-    --z-btn_plr: 12px
+    --z-btn_plr: clamp(8px, (100vw / 1000 * 12), 12px)
     font-weight: 500
+    outline: none
     transition: .2s cubic-bezier(0.3, 0, 0.5, 1)
     &:hover
         transition-duration: .1s

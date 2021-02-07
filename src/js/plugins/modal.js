@@ -5,18 +5,22 @@ Element.prototype.appendAfter = function(element) {
 function noop() {}
 
 function _createButtons(buttons = []) {
+  console.log(buttons)
   const buttonsWrap = document.createElement('div')
   buttonsWrap.classList.add('z-modal__btns')
+  
   
   buttons.forEach(btn => {
     const $btn = document.createElement('button')
  
     $btn.textContent = btn.text
-    const cc = btn.type.split(' ')
+    const cc = btn.classes.split(',')
     console.log(cc)
+    
+    
+    $btn.classList.add(...['z-btn', 'z-btn_main'])
+    $btn.classList.add(btn.classes)
     $btn.classList.add('z-modal__btn')
-    $btn.classList.add(...['z-btn', 'z-btn_main', 'z-modal__btn'])
-    // $btn.classList.add(...cc)
     $btn.onclick = btn.handler || noop
   
     buttonsWrap.appendChild($btn)
