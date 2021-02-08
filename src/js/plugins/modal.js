@@ -8,21 +8,14 @@ function _createButtons(buttons = []) {
   console.log(buttons)
   const buttonsWrap = document.createElement('div')
   buttonsWrap.classList.add('z-modal__btns')
-  
-  
+
+
   buttons.forEach(btn => {
     const $btn = document.createElement('button')
- 
     $btn.textContent = btn.text
-    const cc = btn.classes.split(',')
-    console.log(cc)
-    
-    
-    $btn.classList.add(...['z-btn', 'z-btn_main'])
-    $btn.classList.add(btn.classes)
+    $btn.className = btn.classes
     $btn.classList.add('z-modal__btn')
     $btn.onclick = btn.handler || noop
-  
     buttonsWrap.appendChild($btn)
   })
   return buttonsWrap
@@ -66,7 +59,7 @@ zmodal = function(options) {
   const $modal = _createModal(options)
   let closing = false
   let destroyed = false
-  
+
   const zmodal = {
     open() {
       if (destroyed) {
@@ -84,15 +77,15 @@ zmodal = function(options) {
       }, ANIMATION_DELAY)
     }
   }
-  
+
   const listener = event => {
     if (event.target.dataset.zmodal === 'close') {
       zmodal.close()
     }
   }
-  
+
   $modal.addEventListener('click', listener)
-  
+
   return Object.assign(zmodal, {
     setContent(html) {
       $modal.querySelector('[data-zmodal="content"]').innerHTML = html
