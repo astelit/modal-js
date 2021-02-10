@@ -58,10 +58,10 @@
     transform: translateY(-50%)
 
   &__close
-    @extend %btn-reset
+    all: unset
+    cursor: pointer
     width: var(--z-modal_close_size)
     height: var(--z-modal_close_size)
-    outline: none
     transition: .2s cubic-bezier(0.3, 0, 0.5, 1)
     &:not(:empty)
       display: flex
@@ -85,7 +85,7 @@
         width: 1px
         height: 85%
     &:hover
-      transform: rotate(180deg)
+      transform: rotate(90deg)
 
   &__window > &__close
     float: right
