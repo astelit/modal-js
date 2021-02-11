@@ -3,26 +3,25 @@ const arts = [
     id: 1,
     title: 'Dark and Light',
     price: 30,
-    img: 'https://i.pinimg.com/originals/f3/34/ee/f334eeef4979c6c7c0279e16565fe06e.gif'
-    
+    img: 'img/arts/01.gif'
   },
   {
     id: 2,
     title: 'Dark and Light',
     price: 44,
-    img: 'https://i.pinimg.com/564x/b8/56/97/b85697b1f550fd3943eadfc52a0170d6.jpg'
+    img: 'img/arts/02.jpg'
   },
   {
     id: 3,
     title: 'Dark and Light',
     price: 40,
-    img: 'https://i.pinimg.com/originals/14/29/77/1429772573b8e2c7a0da6724e5c8190f.gif'
+    img: 'img/arts/03.gif'
   },
   {
     id: 4,
     title: 'Dark and Light',
     price: 60,
-    img: 'https://i.pinimg.com/564x/13/5a/18/135a1863a85e2d409ebc38d7628ce520.jpg'
+    img: 'img/arts/04.jpg'
     
     
   },
@@ -30,25 +29,25 @@ const arts = [
     id: 5,
     title: 'Dark and Light',
     price: 70,
-    img: 'https://i.pinimg.com/564x/7f/32/d3/7f32d3415a7f45e6cb09976b359c0fce.jpg'
+    img: 'img/arts/05.jpg'
   },
   {
     id: 6,
     title: 'Dark and Light',
     price: 80,
-    img: 'https://i.pinimg.com/564x/89/9e/8e/899e8ed1fdf4ccac3236c5a81e13327e.jpg'
+    img: 'img/arts/06.jpg'
   },
   {
     id: 7,
     title: 'Dark and Light',
     price: 40,
-    img: 'https://i.pinimg.com/564x/bf/95/f0/bf95f0fafe73f88805dbe757e29ef8e0.jpg'
+    img: 'img/arts/07.jpg'
   },
   {
     id: 8,
     title: 'Dark and Light',
     price: 50,
-    img: 'https://i.pinimg.com/564x/54/e0/10/54e0101c2ab5acb30ae61cfc63a25fe5.jpg'
+    img: 'img/arts/08.jpg'
   }
 ]
 
@@ -66,7 +65,8 @@ const toHTML = arts => `
           <div class="z-card__body">
               <div class="z-card__name">${arts.title}</div>
               <div class="z-card__btns">
-                  <button class="z-btn z-btn_main z-card__btn">
+                  <button class="z-btn z-btn_main z-card__btn"
+                          data-zmodal-show="price" data-zcard-id="${arts.id}">
                       <span class="z-btn__txt">Посмотреть цену</span>
                   </button>
                   <button class="z-btn z-btn_secondary z-card__btn">
@@ -107,7 +107,32 @@ const zModal = zmodal({
   ]
 })
 
-setTimeout(function() {
-  zModal.open()
-}, 2000)
+const zModalPrice = zmodal({
+  closeBtnShow: true,
+  closeBtnInside: true,
+  heading: 'Цена за товар',
+  footerButtons: [
+    {
+      text: 'Закрыть', classes: 'z-btn z-btn_main', handler() {
+        zModalPrice.close();
+      }
+    }
+  ]
+})
+
+document.addEventListener('click', event => {
+  event.preventDefault()
+  const zmodalType = event.target.dataset.zmodalShow
+  const id = +event.target.dataset.zcardId
+  
+  
+  if (zmodalType === 'price') {
+    const art = arts.find(a => a.id === id)
+    zModalPrice.setContent(`
+      <img src="${art.img}" alt="${art.title}">
+      <p>Цена на ${art.title}: <b>${art.price}</b></p>
+    `)
+    zModalPrice.open()
+  }
+})
 
