@@ -6,7 +6,8 @@
     "browser": true
   },
   "globals": {
-    "zmodal": true
+    "zmodal": true,
+    "zconfirm": true
   },
   "extends": ["eslint:recommended", "google"],
   "rules": {

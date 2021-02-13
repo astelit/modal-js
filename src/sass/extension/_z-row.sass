@@ -1,6 +1,7 @@
 .z-row
   display: grid
-  grid-gap: clamp(15px, (100vw / 1435 * 30), 30px)
+  grid-gap: clamp(15px, (100vw / 900 * 30), 30px)
+  grid-auto-flow: dense
   &:not([class*="z-row_r"]):not([class*="z-row_fit"])
     grid-template-columns: 100%
   &_r3

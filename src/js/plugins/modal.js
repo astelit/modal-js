@@ -5,7 +5,6 @@ Element.prototype.appendAfter = function(element) {
 function noop() {}
 
 function _createButtons(buttons = []) {
-  console.log(buttons)
   const buttonsWrap = document.createElement('div')
   buttonsWrap.classList.add('z-modal__btns')
 
@@ -65,6 +64,9 @@ zmodal = function(options) {
       if (destroyed) {
         return console.log('Modal is destroyed')
       }
+      const windowWidth = document.documentElement.scrollWidth
+      document.documentElement.style.overflowY = 'hidden'
+      document.documentElement.style.width = windowWidth + 'px'
       !closing && $modal.classList.add('is_active')
     },
     close() {
@@ -74,6 +76,10 @@ zmodal = function(options) {
       setTimeout(() => {
         $modal.classList.remove('is_closing')
         closing = false
+        document.documentElement.removeAttribute('style')
+        if ( typeof options.onClose === 'function') {
+          options.onClose()
+        }
       }, ANIMATION_DELAY)
     }
   }

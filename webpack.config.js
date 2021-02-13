@@ -48,6 +48,10 @@ module.exports = {
           from: './assets',
           to: `${path.resolve(__dirname, 'dist')}/assets`
         },
+        {
+          from: './img',
+          to: `${path.resolve(__dirname, 'dist')}/img`
+        }
       ],
     }),
     ...glob.sync(`${path.resolve(__dirname, 'src')}/*.html`).map((htmlFile) => {
@@ -127,7 +131,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
+        test: /\.(?:ico|gif|png|jpe?g|webp)$/i,
         use: [{
           loader: 'file-loader',
           options: {
