@@ -1,3 +1,2 @@
-const $ = {}
-
-window.$ = $
+// const $ = {}
+// window.$ = $

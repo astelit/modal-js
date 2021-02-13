@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="assets/favicons/favicon.ico" type="image/x-icon">
     <link rel="icon" href="assets/favicons/favicon_32.png" sizes="32x32">
@@ -11,42 +10,28 @@
     <link rel="icon" href="assets/favicons/favicon_96.png" sizes="96x96">
     <link rel="icon" href="assets/favicons/favicon_144.png" sizes="144x144">
     <title>modal-js</title>
+
+    <style>
+        @media (prefers-color-scheme: dark) {
+            html {
+                background-color: #0d1117;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div id="app" class="page-wrap">
 
     <main class="main page-wrap__main">
-        <div class="main__inner">
+
             <h1>Modal-js</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad atque blanditiis, distinctio doloribus ducimus eos ex ipsam iusto, labore laborum nemo neque non officiis optio provident repellendus sequi soluta vel vero voluptate. A atque ducimus fuga impedit labore magnam omnis rerum. Adipisci dolor dolores excepturi ipsa iusto laborum maxime molestias, nesciunt officia optio perferendis, provident quibusdam rerum sit tempora temporibus veritatis? At doloribus excepturi nam officia pariatur? A accusantium adipisci alias delectus dolorum et excepturi exercitationem, molestiae necessitatibus neque odio officia perspiciatis praesentium quos saepe sequi soluta veniam voluptatem! Delectus neque pariatur tempora. Ea eum obcaecati tempore! Amet, dolorem, doloribus!</p>
-        </div>
 
-        <div class="z-modal">
-            <div class="z-modal__overlay">
-                <div class="z-modal__window">
-                    <div class="z-modal__header">
-                        <div class="z-modal__heading">Modal Heading</div>
-                        <button class="z-modal__close"></button>
-                    </div>
-                    <div class="z-modal__main">
-                        <div class="z-editor">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                    </div>
-                    <div class="z-modal__footer">
-                        <div class="z-modal__btns">
-                            <button type="button" class="z-modal__btn">Ok</button>
-                            <button type="button" class="z-modal__btn">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div id="arts" class="z-row z-row_fit" style="--min-fit: 160px"></div>
+
     </main>
 
 </div>
-
 </body>
 </html>

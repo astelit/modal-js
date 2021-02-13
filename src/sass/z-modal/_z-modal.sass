@@ -58,10 +58,10 @@
     transform: translateY(-50%)
 
   &__close
-    @extend %btn-reset
+    all: unset
+    cursor: pointer
     width: var(--z-modal_close_size)
     height: var(--z-modal_close_size)
-    outline: none
     transition: .2s cubic-bezier(0.3, 0, 0.5, 1)
     &:not(:empty)
       display: flex
@@ -85,7 +85,7 @@
         width: 1px
         height: 85%
     &:hover
-      transform: rotate(180deg)
+      transform: rotate(90deg)
 
   &__window > &__close
     float: right
@@ -122,7 +122,13 @@
   &__heading
     font-size: 1.5em
 
-
+  &__thumb
+    display: grid
+    gap: 15px
+    grid-template-columns: 1fr .6fr
+    justify-content: center
+    align-items: center
+    text-align: center
   &__btns
     --gap: 10px
     display: flex
@@ -130,20 +136,5 @@
     margin: 0 calc(var(--gap) / -2) calc(var(--gap) / -1)
     > *
       margin: 0 calc(var(--gap) / 2) var(--gap)
-  &__btn
-    @extend %btn-reset
-    --z-btn_fz: 14px
-    --z-btn_color: #fff
-    --z-btn_bgc: #2ea043
-    --z-btn_bdc: #238636
-    --z-btn_bdw: 1px
-    --z-btn_bdrs: 6px
-    --z-btn_ptb: 5px
-    --z-btn_plr: 10px
-    font-weight: 500
-    transition: .2s cubic-bezier(0.3, 0, 0.5, 1)
-    &:hover
-      --z-btn_bgc: #2ea043
-      --z-btn_bdc: #3fb950
-      transition-duration: .1s
+  //&__btn
 
